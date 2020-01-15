@@ -11,7 +11,11 @@ import ArticleList from '../../components/ArticleList';
  */
 export default class Home extends PureComponent {
   static navigatorStyle = {};
-  static propTypes = {};
+  static propTypes = {
+    recipies: PropTypes.array,
+    loadingRecipies: PropTypes.bool,
+    retrieveRecipies: PropTypes.func,
+  };
   static defaultProps = {};
 
   static displayName = 'Home';
@@ -20,7 +24,15 @@ export default class Home extends PureComponent {
   //   super(props)
   // }
 
+  componentDidMount = () => {
+    const {retrieveRecipies} = this.props;
+
+    retrieveRecipies();
+  };
+
   render() {
+    // const {recipies, loadingRecipies} = this.props;
+
     return (
       <ScrollView>
         <ArticleList />

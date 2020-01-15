@@ -7,14 +7,17 @@
  */
 
 import React from 'react';
-import {SafeAreaView, ScrollView, View, Text, StatusBar} from 'react-native';
-import 'react-native-gesture-handler';
+import {StatusBar} from 'react-native';
+import {Provider} from 'react-redux';
 import {AppNavigation} from './src/navigation/navigator';
+import {getStore} from './src/store';
 
 const App = () => (
   <>
     <StatusBar barStyle="dark-content" />
-    <AppNavigation />
+    <Provider store={getStore()}>
+      <AppNavigation />
+    </Provider>
   </>
 );
 
