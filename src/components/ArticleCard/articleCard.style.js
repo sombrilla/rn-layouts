@@ -3,15 +3,13 @@ import {metrics, colors} from '../../themes';
 
 export default StyleSheet.create({
   container: {
-    borderRadius: 10,
     overflow: 'hidden',
-    marginVertical: 10,
   },
   infoContainer: {
     position: 'absolute',
     bottom: 0,
-    paddingHorizontal: metrics.horizontal.pagePadding,
-    paddingVertical: 20,
+    paddingHorizontal: metrics.horizontal.pagePadding / 2,
+    paddingVertical: 15,
   },
   title: {
     color: colors.white,

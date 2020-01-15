@@ -23,7 +23,7 @@ class ArticleCard extends Component {
           source={
             'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80'
           }
-          size={metrics.screen.width / 2.35}
+          size={metrics.screen.width / 2}
         />
         <LinearGradient
           style={styles.gradient}
