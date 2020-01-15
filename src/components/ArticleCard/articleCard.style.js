@@ -21,4 +21,9 @@ export default StyleSheet.create({
   description: {
     color: colors.white,
   },
+  gradient: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+  },
 });
