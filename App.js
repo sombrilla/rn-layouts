@@ -7,26 +7,20 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, ScrollView, View, Text, StatusBar} from 'react-native';
+import 'react-native-gesture-handler';
+import {AppNavigation} from './src/navigation/navigator';
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic">
-            <Text>Henlo</Text>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+const App = () => (
+  <>
+    <StatusBar barStyle="dark-content" />
+    <AppNavigation />
+    {/* <SafeAreaView>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <Text>Henlo</Text>
+      </ScrollView>
+    </SafeAreaView> */}
+  </>
+);
 
 export default App;
