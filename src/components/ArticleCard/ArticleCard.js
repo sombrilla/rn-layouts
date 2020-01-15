@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {withNavigation} from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './articleCard.style';
 import {metrics, colors} from '../../themes';
+import Pages from '../../enum/Pages';
 import Picture from '../Picture';
 
 class ArticleCard extends Component {
@@ -16,9 +18,14 @@ class ArticleCard extends Component {
 
   // };
 
+  handleCardPress = () => {
+    const {navigation} = this.props;
+    navigation.navigate(Pages.ARTICLE);
+  };
+
   render() {
     return (
-      <View style={styles.container}>
+      <TouchableOpacity onPress={this.handleCardPress} style={styles.container}>
         <Picture
           source={
             'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80'
@@ -34,11 +41,13 @@ class ArticleCard extends Component {
           <Text style={styles.title}>Title</Text>
           <Text style={styles.description}>Description</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
 
-ArticleCard.propTypes = {};
+ArticleCard.propTypes = {
+  navigation: PropTypes.any,
+};
 
-export default ArticleCard;
+export default withNavigation(ArticleCard);
