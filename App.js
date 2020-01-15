@@ -15,11 +15,6 @@ const App = () => (
   <>
     <StatusBar barStyle="dark-content" />
     <AppNavigation />
-    {/* <SafeAreaView>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Text>Henlo</Text>
-      </ScrollView>
-    </SafeAreaView> */}
   </>
 );
 

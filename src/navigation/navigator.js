@@ -27,6 +27,10 @@ const homeNavigation = createStackNavigator(
       screen: routes[Pages.HOME].screen,
       ...homeStyle(),
     },
+    [Pages.ARTICLE]: {
+      screen: routes[Pages.ARTICLE].screen,
+      ...homeStyle(),
+    },
   },
   {
     navigationOptions: {
