@@ -4,7 +4,7 @@ export const homeStyle = () => ({
   }),
 });
 
-export const moreStyle = () => ({
+export const searchStyle = () => ({
   navigationOptions: () => ({
     headerStyle: {},
   }),

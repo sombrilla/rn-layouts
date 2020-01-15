@@ -1,11 +1,11 @@
 import Pages from '../enum/Pages';
 import Home from '../pages/Home';
-import More from '../pages/More';
+import Search from '../pages/Search';
 import Article from '../pages/Article';
 
 const routes = {
   Home: {id: Pages.HOME, screen: Home},
-  More: {id: Pages.MORE, screen: More},
+  Search: {id: Pages.SEARCH, screen: Search},
   Article: {id: Pages.ARTICLE, screen: Article},
 };
 

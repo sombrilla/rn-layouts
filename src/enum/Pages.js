@@ -1,5 +1,5 @@
 export default {
   HOME: 'Home',
-  MORE: 'More',
+  SEARCH: 'Search',
   ARTICLE: 'Article',
 };

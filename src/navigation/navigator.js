@@ -4,19 +4,19 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 // import React from 'react';
 import routes from './routes';
 import Pages from '../enum/Pages';
-import {homeStyle, moreStyle} from './styles';
+import {homeStyle, searchStyle} from './styles';
 //   import { colors, metrics, fonts } from '../theme';
 
-const moreNavigation = createStackNavigator(
+const searchNavigation = createStackNavigator(
   {
-    [Pages.MORE]: {
-      screen: routes[Pages.MORE].screen,
-      ...moreStyle(),
+    [Pages.SEARCH]: {
+      screen: routes[Pages.SEARCH].screen,
+      ...searchStyle(),
     },
   },
   {
     navigationOptions: {
-      tabBarLabel: 'MORE',
+      tabBarLabel: 'SEARCH',
     },
   },
 );
@@ -42,7 +42,7 @@ const homeNavigation = createStackNavigator(
 const mainNavigation = createBottomTabNavigator(
   {
     [Pages.HOME]: homeNavigation,
-    [Pages.MORE]: moreNavigation,
+    [Pages.SEARCH]: searchNavigation,
   },
   {
     lazy: false,
