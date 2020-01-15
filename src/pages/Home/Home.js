@@ -1,8 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, Text, ActivityIndicator, UIManager, LayoutAnimation} from 'react-native';
 import styles from './home.style';
 import ArticleList from '../../components/ArticleList';
+
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
 /**
  * Description
@@ -28,6 +31,14 @@ export default class Home extends PureComponent {
     const {retrieveRecipies} = this.props;
 
     retrieveRecipies();
+  };
+
+  componentDidUpdate = prevProps => {
+    const {recipies} = this.props;
+
+    if (prevProps.recipies !== recipies) {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    }
   };
 
   renderLoader = () => (
