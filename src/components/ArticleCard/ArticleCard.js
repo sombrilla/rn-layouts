@@ -24,22 +24,24 @@ class ArticleCard extends Component {
   };
 
   render() {
+    const {data} = this.props;
+    const {title, thumbnail, ingredients} = data;
+
     return (
       <TouchableOpacity onPress={this.handleCardPress} style={styles.container}>
-        <Picture
-          source={
-            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&w=1000&q=80'
-          }
-          size={metrics.screen.width / 2}
-        />
+        <Picture source={thumbnail} size={metrics.screen.width / 2} />
         <LinearGradient
           style={styles.gradient}
           colors={[colors.transparent, colors.blackOverlay]}
           locations={[0.5, 0.8]}
         />
         <View style={styles.infoContainer}>
-          <Text style={styles.title}>Title</Text>
-          <Text style={styles.description}>Description</Text>
+          <Text numberOfLines={1} style={styles.title}>
+            {title}
+          </Text>
+          <Text numberOfLines={2} style={styles.description}>
+            {ingredients}
+          </Text>
         </View>
       </TouchableOpacity>
     );
@@ -47,6 +49,7 @@ class ArticleCard extends Component {
 }
 
 ArticleCard.propTypes = {
+  data: PropTypes.object,
   navigation: PropTypes.any,
 };
 

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, ScrollView} from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
 import styles from './home.style';
 import ArticleList from '../../components/ArticleList';
 
@@ -30,13 +30,24 @@ export default class Home extends PureComponent {
     retrieveRecipies();
   };
 
+  renderLoader = () => (
+    <View style={styles.loadingContainer}>
+      <Text style={styles.loadingCopy}>Retrieving recipies</Text>
+      <ActivityIndicator size="large" />
+    </View>
+  );
+
   render() {
-    // const {recipies, loadingRecipies} = this.props;
+    const {recipies, loadingRecipies} = this.props;
+
+    if (loadingRecipies) {
+      return this.renderLoader();
+    }
 
     return (
-      <ScrollView>
-        <ArticleList />
-      </ScrollView>
+      <View style={{flex: 1}}>
+        <ArticleList entries={recipies} />
+      </View>
     );
   }
 }

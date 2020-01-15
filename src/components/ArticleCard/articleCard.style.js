@@ -13,7 +13,8 @@ export default StyleSheet.create({
   },
   title: {
     color: colors.white,
-    fontSize: 25,
+    fontSize: 15,
+    fontWeight: 'bold',
     marginBottom: 5,
   },
   description: {
