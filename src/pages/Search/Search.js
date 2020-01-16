@@ -45,7 +45,7 @@ export default class Search extends PureComponent {
     const {query} = this.state;
     const {recipiesResults} = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <TextInput
           style={styles.input}
           onChangeText={text => this.onChangeText(text)}
