@@ -46,7 +46,7 @@ export default class Search extends PureComponent {
         <TextInput
           style={styles.input}
           onChangeText={text => this.onChangeText(text)}
-          onSubmitEditing={text => this.submitQuery(text)}
+          onSubmitEditing={event => this.submitQuery(event.nativeEvent.text)}
           value={query}
           placeholder="Search..."
           placeholderTextColor="grey"
