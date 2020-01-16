@@ -13,6 +13,10 @@ const searchNavigation = createStackNavigator(
       screen: routes[Pages.SEARCH].screen,
       ...searchStyle(),
     },
+    [Pages.ARTICLE]: {
+      screen: routes[Pages.ARTICLE].screen,
+      ...searchStyle(),
+    },
   },
   {
     navigationOptions: {
