@@ -1,3 +1,4 @@
+import {withNavigation} from 'react-navigation';
 import Article from './Article';
 
-export default Article;
+export default withNavigation(Article);

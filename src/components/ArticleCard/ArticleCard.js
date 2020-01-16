@@ -19,8 +19,9 @@ class ArticleCard extends Component {
   // };
 
   handleCardPress = () => {
-    const {navigation} = this.props;
-    navigation.navigate(Pages.ARTICLE);
+    const {navigation, data} = this.props;
+    const {title} = data;
+    navigation.navigate(Pages.ARTICLE, {title});
   };
 
   render() {

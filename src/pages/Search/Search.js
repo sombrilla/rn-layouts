@@ -33,9 +33,6 @@ export default class Search extends PureComponent {
 
   submitQuery = query => {
     const {loadingSearchRecipies, searchRecipies} = this.props;
-
-    console.log(query);
-    console.log(searchRecipies);
     if (!loadingSearchRecipies) {
       searchRecipies(query);
     }
