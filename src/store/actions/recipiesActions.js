@@ -10,3 +10,12 @@ export const recipiesActions = createRequestActions(
 
 export const retrieveRecipies = () => dispatch =>
   dispatch(getEntity(recipiesActions, `${base.ENDPOINT}`));
+
+export const SEARCH_RECIPIES = 'SEARCH_RECIPIES';
+export const searchRecipiesActions = createRequestActions(
+  `${recipiesBaseActionType}/${SEARCH_RECIPIES}`,
+);
+
+export const searchRecipies = query => dispatch => {
+  dispatch(getEntity(searchRecipiesActions, `${base.ENDPOINT}/?q=${query}`));
+};
