@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
-// import PropTypes from 'prop-types';
-import {View, Text} from 'react-native';
-// import styles from './article.style';
+import PropTypes from 'prop-types';
+import {Text, SafeAreaView, ScrollView} from 'react-native';
+import styles from './article.style';
 
 /**
  * Description
@@ -9,10 +9,9 @@ import {View, Text} from 'react-native';
  * @class Article
  */
 export default class Article extends PureComponent {
-  static navigationOptions = ({navigation}) => ({
-    title: `${navigation.getParam('title', 'Article')}`,
-  });
-  static propTypes = {};
+  static propTypes = {
+    navigation: PropTypes.any,
+  };
   static defaultProps = {};
   static displayName = 'Article';
 
@@ -21,10 +20,14 @@ export default class Article extends PureComponent {
   // }
 
   render() {
+    const {navigation} = this.props;
+    const title = navigation.getParam('title', 'Article');
     return (
-      <View>
-        <Text>Article</Text>
-      </View>
+      <SafeAreaView style={{flex: 1}}>
+        <ScrollView style={styles.container}>
+          <Text style={styles.title}>{title}</Text>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
