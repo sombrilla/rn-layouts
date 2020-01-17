@@ -32,6 +32,7 @@ export default {
   whiteBorder: hexWithAlphaComponent(hexWhite, 0.2),
   // Mainly used for (gradient)overlays and shadows
   whiteOverlay: hexWithAlphaComponent(hexWhite, 0.3),
+  blackHalf: hexWithAlphaComponent(hexBlack, 0.5),
   blackOverlay: hexWithAlphaComponent(hexBlack, 0.3),
   blackDetail: hexWithAlphaComponent(hexBlack, 0.1),
 };
