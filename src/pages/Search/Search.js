@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, TextInput} from 'react-native';
+import {SafeAreaView, TextInput} from 'react-native';
 import styles from './search.style';
 import ArticleList from '../../components/ArticleList';
 
@@ -42,7 +42,7 @@ export default class Search extends PureComponent {
     const {query} = this.state;
     const {recipiesResults} = this.props;
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <TextInput
           style={styles.input}
           onChangeText={text => this.onChangeText(text)}
@@ -52,7 +52,7 @@ export default class Search extends PureComponent {
           placeholderTextColor="grey"
         />
         <ArticleList entries={recipiesResults} />
-      </View>
+      </SafeAreaView>
     );
   }
 }

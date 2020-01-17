@@ -1,6 +1,13 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, ActivityIndicator, UIManager, LayoutAnimation} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  SafeAreaView,
+  UIManager,
+  LayoutAnimation,
+} from 'react-native';
 import styles from './home.style';
 import ArticleList from '../../components/ArticleList';
 
@@ -56,9 +63,9 @@ export default class Home extends PureComponent {
     }
 
     return (
-      <View style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1}}>
         <ArticleList entries={recipies} />
-      </View>
+      </SafeAreaView>
     );
   }
 }
