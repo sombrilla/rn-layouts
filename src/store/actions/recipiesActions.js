@@ -11,11 +11,23 @@ export const recipiesActions = createRequestActions(
 export const retrieveRecipies = () => dispatch =>
   dispatch(getEntity(recipiesActions, `${base.ENDPOINT}`));
 
+export const RETRIEVE_MORE_RECIPIES = 'RETRIEVE_MORE_RECIPIES';
+export const moreRecipiesActions = createRequestActions(
+  `${recipiesBaseActionType}/${RETRIEVE_MORE_RECIPIES}`,
+);
+
+export const retrieveMoreRecipies = page => dispatch =>
+  dispatch(getEntity(moreRecipiesActions, `${base.ENDPOINT}/?p=${page}`));
+
 export const SEARCH_RECIPIES = 'SEARCH_RECIPIES';
 export const searchRecipiesActions = createRequestActions(
   `${recipiesBaseActionType}/${SEARCH_RECIPIES}`,
 );
 
-export const searchRecipies = query => dispatch => {
-  dispatch(getEntity(searchRecipiesActions, `${base.ENDPOINT}/?q=${query}`));
+export const searchRecipies = (query, page) => dispatch => {
+  if (!page || page <= 0) {
+    return dispatch(getEntity(searchRecipiesActions, `${base.ENDPOINT}/?q=${query}`));
+  }
+
+  return dispatch(getEntity(searchRecipiesActions, `${base.ENDPOINT}/?q=${query}&p=${page}`));
 };
