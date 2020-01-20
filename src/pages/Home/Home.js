@@ -7,7 +7,7 @@ import {
   SafeAreaView,
   UIManager,
   LayoutAnimation,
-  ScrollView,
+  FlatList,
 } from 'react-native';
 import styles from './home.style';
 import FeaturedCard from '../../components/FeaturedCard';
@@ -65,12 +65,12 @@ export default class Home extends PureComponent {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        <ScrollView>
-          <Text style={styles.title}>Featured</Text>
-          {recipies.map((recipy, index) => (
-            <FeaturedCard key={`${recipy}-${index}`} data={recipy} />
-          ))}
-        </ScrollView>
+        <FlatList
+          data={recipies}
+          ListHeaderComponent={<Text style={styles.title}>Featured</Text>}
+          renderItem={({item}) => <FeaturedCard data={item} />}
+          keyExtractor={item => item.title}
+        />
       </SafeAreaView>
     );
   }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, FlatList} from 'react-native';
+import {Text, FlatList} from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './articleList.style';
 import ArticleCard from '../ArticleCard';
@@ -20,6 +20,7 @@ class ArticleList extends Component {
       <FlatList
         contentContainerStyle={styles.container}
         data={entries}
+        ListHeaderComponent={entries.length > 0 && <Text style={styles.title}>Results</Text>}
         renderItem={({item}) => <ArticleCard data={item} />}
         keyExtractor={item => item.title}
         numColumns={2}
