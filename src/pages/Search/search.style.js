@@ -5,7 +5,20 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  closeButton: {
+    borderWidth: 1,
+    borderColor: colors.lightGrey,
+    paddingTop: 4,
+    borderRadius: 20,
+  },
   input: {
+    flex: 1,
+    height: 50,
     borderRadius: 20,
     backgroundColor: 'white',
     paddingVertical: 10,

@@ -1,13 +1,13 @@
 export const homeStyle = () => ({
   navigationOptions: () => ({
     headerStyle: {},
-    header: null,
+    headerShown: false,
   }),
 });
 
 export const searchStyle = () => ({
   navigationOptions: () => ({
     headerStyle: {},
-    header: null,
+    headerShown: false,
   }),
 });

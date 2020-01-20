@@ -9,8 +9,10 @@ import {
   LayoutAnimation,
   FlatList,
   RefreshControl,
+  TouchableOpacity,
 } from 'react-native';
 import styles from './home.style';
+import Pages from '../../enum/Pages';
 import FeaturedCard from '../../components/FeaturedCard';
 
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -24,6 +26,7 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 export default class Home extends PureComponent {
   static navigatorStyle = {};
   static propTypes = {
+    navigation: PropTypes.any.isRequired,
     recipies: PropTypes.array,
     loadingRecipies: PropTypes.bool,
     loadingMoreRecipies: PropTypes.bool,
@@ -72,6 +75,12 @@ export default class Home extends PureComponent {
     }
   };
 
+  goToSearch = () => {
+    const {navigation} = this.props;
+
+    navigation.navigate(Pages.SEARCH);
+  };
+
   render() {
     const {recipies, loadingRecipies} = this.props;
 
@@ -80,19 +89,23 @@ export default class Home extends PureComponent {
     }
 
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1}}>
-          <FlatList
-            data={recipies}
-            ListHeaderComponent={<Text style={styles.title}>Featured</Text>}
-            refreshControl={<RefreshControl refreshing={loadingRecipies} />}
-            onEndReachedThreshold={0.4}
-            onEndReached={this.handleLoadMore}
-            renderItem={({item}) => <FeaturedCard data={item} />}
-            keyExtractor={item => item.title}
-          />
-        </View>
-      </SafeAreaView>
+      <View style={{flex: 1}}>
+        <SafeAreaView>
+          <TouchableOpacity style={styles.input} onPress={this.goToSearch}>
+            <Text style={styles.inputCopy}>Search...</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+        <FlatList
+          style={{zIndex: -1}}
+          data={recipies}
+          ListHeaderComponent={<Text style={styles.title}>Featured</Text>}
+          refreshControl={<RefreshControl refreshing={loadingRecipies} />}
+          onEndReachedThreshold={0.4}
+          onEndReached={this.handleLoadMore}
+          renderItem={({item}) => <FeaturedCard data={item} />}
+          keyExtractor={item => item.title}
+        />
+      </View>
     );
   }
 }

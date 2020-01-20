@@ -1,5 +1,6 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {withNavigation} from 'react-navigation';
 import Home from './Home';
 import {retrieveRecipies, retrieveMoreRecipies} from '../../store/actions/recipiesActions';
 
@@ -22,4 +23,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Home);
+)(withNavigation(Home));

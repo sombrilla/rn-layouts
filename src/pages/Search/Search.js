@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {SafeAreaView, TextInput} from 'react-native';
+import {SafeAreaView, TextInput, View} from 'react-native';
 import styles from './search.style';
 import ArticleList from '../../components/ArticleList';
+import CtaIcon from '../../components/CtaIcon';
 
 /**
  * Description
@@ -12,6 +13,7 @@ import ArticleList from '../../components/ArticleList';
 export default class Search extends PureComponent {
   static navigatorStyle = {};
   static propTypes = {
+    navigation: PropTypes.any,
     recipiesResults: PropTypes.array,
     loadingSearchRecipies: PropTypes.bool,
     searchRecipies: PropTypes.func,
@@ -27,6 +29,10 @@ export default class Search extends PureComponent {
     };
   }
 
+  componentDidMount = () => {
+    this.input.focus();
+  };
+
   onChangeText = text => {
     this.setState({query: text});
   };
@@ -38,19 +44,30 @@ export default class Search extends PureComponent {
     }
   };
 
+  handleClose = () => {
+    const {navigation} = this.props;
+
+    navigation.goBack();
+  };
+
   render() {
     const {query} = this.state;
     const {recipiesResults} = this.props;
     return (
       <SafeAreaView style={styles.container}>
-        <TextInput
-          style={styles.input}
-          onChangeText={text => this.onChangeText(text)}
-          onSubmitEditing={event => this.submitQuery(event.nativeEvent.text)}
-          value={query}
-          placeholder="Search..."
-          placeholderTextColor="grey"
-        />
+        <View style={styles.inputContainer}>
+          <CtaIcon onPress={this.handleClose} iconName="close" style={styles.closeButton} />
+          <TextInput
+            // eslint-disable-next-line no-return-assign
+            ref={ref => (this.input = ref)}
+            style={styles.input}
+            onChangeText={text => this.onChangeText(text)}
+            onSubmitEditing={event => this.submitQuery(event.nativeEvent.text)}
+            value={query}
+            placeholder="Search..."
+            placeholderTextColor="grey"
+          />
+        </View>
         <ArticleList entries={recipiesResults} />
       </SafeAreaView>
     );
