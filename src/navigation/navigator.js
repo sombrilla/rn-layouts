@@ -23,9 +23,6 @@ const homeNavigation = createStackNavigator(
   },
   {
     mode: 'modal',
-    navigationOptions: {
-      tabBarLabel: 'HOME',
-    },
   },
 );
 
