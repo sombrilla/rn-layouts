@@ -9,9 +9,9 @@ import {BASE_URL, DEFAULT_TIMEOUT} from '../config/app';
 const apiInstance = axios.create({
   baseURL: BASE_URL,
   timeout: DEFAULT_TIMEOUT,
-  headers: {
-    Authorization: `Bearer ${btoa('J7AEUTXZBUWSC5V42TU6')}`,
-  },
+  // headers: {
+  //   API_KEY: '237b12cbd0aa4740b915a7244f2c8946',
+  // },
 });
 
 /**

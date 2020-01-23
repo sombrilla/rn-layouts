@@ -1,4 +1,5 @@
-import {base} from '../../config/app/endpoints';
+import {base, random} from '../../config/app/endpoints';
+import {API_KEY} from '../../config/app/index';
 import {createRequestActions, getEntity} from './index';
 
 export const recipiesBaseActionType = 'recipiesActions';
@@ -8,16 +9,8 @@ export const recipiesActions = createRequestActions(
   `${recipiesBaseActionType}/${RETRIEVE_RECIPIES}`,
 );
 
-export const retrieveRecipies = () => dispatch =>
-  dispatch(getEntity(recipiesActions, `${base.ENDPOINT}`));
-
-export const RETRIEVE_MORE_RECIPIES = 'RETRIEVE_MORE_RECIPIES';
-export const moreRecipiesActions = createRequestActions(
-  `${recipiesBaseActionType}/${RETRIEVE_MORE_RECIPIES}`,
-);
-
-export const retrieveMoreRecipies = page => dispatch =>
-  dispatch(getEntity(moreRecipiesActions, `${base.ENDPOINT}/?p=${page}`));
+export const retrieveRecipies = quantity => dispatch =>
+  dispatch(getEntity(recipiesActions, `${random.ENDPOINT}?apiKey=${API_KEY}&number=${quantity}`));
 
 export const SEARCH_RECIPIES = 'SEARCH_RECIPIES';
 export const searchRecipiesActions = createRequestActions(

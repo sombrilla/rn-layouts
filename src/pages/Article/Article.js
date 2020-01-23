@@ -21,7 +21,10 @@ export default class Article extends PureComponent {
 
   render() {
     const {navigation} = this.props;
-    const title = navigation.getParam('title', 'Article');
+    const data = navigation.getParam('data', []);
+
+    const {title} = data;
+
     return (
       <SafeAreaView style={{flex: 1}}>
         <ScrollView style={styles.container}>

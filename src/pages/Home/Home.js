@@ -7,13 +7,12 @@ import {
   SafeAreaView,
   UIManager,
   LayoutAnimation,
-  FlatList,
-  RefreshControl,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import styles from './home.style';
 import Pages from '../../enum/Pages';
-import FeaturedCard from '../../components/FeaturedCard';
+import CardCarousel from '../../components/CardCarousel';
 
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -29,9 +28,12 @@ export default class Home extends PureComponent {
     navigation: PropTypes.any.isRequired,
     recipies: PropTypes.array,
     loadingRecipies: PropTypes.bool,
-    loadingMoreRecipies: PropTypes.bool,
     retrieveRecipies: PropTypes.func,
-    retrieveMoreRecipies: PropTypes.func,
+    veganRecipies: PropTypes.array.isRequired,
+    popularRecipies: PropTypes.array.isRequired,
+    cheapRecipies: PropTypes.array.isRequired,
+    healthyRecipies: PropTypes.array.isRequired,
+    vegetarianRecipies: PropTypes.array.isRequired,
   };
   static defaultProps = {};
 
@@ -57,7 +59,7 @@ export default class Home extends PureComponent {
 
   fetchRecipies = () => {
     const {retrieveRecipies} = this.props;
-    retrieveRecipies();
+    retrieveRecipies(100);
   };
 
   renderLoader = () => (
@@ -67,14 +69,6 @@ export default class Home extends PureComponent {
     </View>
   );
 
-  handleLoadMore = () => {
-    const {loadingMoreRecipies, retrieveMoreRecipies} = this.props;
-    if (!loadingMoreRecipies) {
-      this.page += 1;
-      retrieveMoreRecipies(this.page);
-    }
-  };
-
   goToSearch = () => {
     const {navigation} = this.props;
 
@@ -82,7 +76,15 @@ export default class Home extends PureComponent {
   };
 
   render() {
-    const {recipies, loadingRecipies} = this.props;
+    const {
+      // recipies,
+      loadingRecipies,
+      veganRecipies,
+      vegetarianRecipies,
+      cheapRecipies,
+      popularRecipies,
+      healthyRecipies,
+    } = this.props;
 
     if (loadingRecipies) {
       return this.renderLoader();
@@ -95,16 +97,15 @@ export default class Home extends PureComponent {
             <Text style={styles.inputCopy}>Search...</Text>
           </TouchableOpacity>
         </SafeAreaView>
-        <FlatList
-          style={{zIndex: -1}}
-          data={recipies}
-          ListHeaderComponent={<Text style={styles.title}>Featured</Text>}
-          refreshControl={<RefreshControl refreshing={loadingRecipies} />}
-          onEndReachedThreshold={0.4}
-          onEndReached={this.handleLoadMore}
-          renderItem={({item}) => <FeaturedCard data={item} />}
-          keyExtractor={item => item.title}
-        />
+        <ScrollView>
+          {popularRecipies.length > 0 && <CardCarousel title="Popular" data={popularRecipies} />}
+          {veganRecipies.length > 0 && <CardCarousel title="Vegan" data={veganRecipies} />}
+          {vegetarianRecipies.length > 0 && (
+            <CardCarousel title="Vegetarian" data={vegetarianRecipies} />
+          )}
+          {healthyRecipies.length > 0 && <CardCarousel title="Healthy" data={healthyRecipies} />}
+          {cheapRecipies.length > 0 && <CardCarousel title="Cheap" data={cheapRecipies} />}
+        </ScrollView>
       </View>
     );
   }
