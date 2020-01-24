@@ -28,7 +28,6 @@ export default StyleSheet.create({
   },
   infoContainer: {
     backgroundColor: colors.greyBackground,
-    borderBottomColor: colors.greyBorder,
     paddingVertical: 15,
     paddingHorizontal: 10,
     flexDirection: 'row',
@@ -56,5 +55,38 @@ export default StyleSheet.create({
   infoCopy: {
     color: colors.blueGrey,
     marginTop: 5,
+  },
+  ingredientsContainer: {
+    backgroundColor: colors.greyBorder,
+    paddingVertical: 15,
+  },
+  ingredientsTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: colors.blueGrey,
+    paddingHorizontal: 10,
+  },
+  ingredientBlock: {
+    flexDirection: 'row',
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderColor: colors.lightGrey,
+    paddingHorizontal: 10,
+  },
+  ingredientInfo: {
+    marginLeft: 10,
+  },
+  ingredientImage: {
+    backgroundColor: colors.white,
+    borderRadius: 10,
+  },
+  ingredientName: {
+    fontWeight: 'bold',
+    color: colors.blueGrey,
+    marginBottom: 5,
+  },
+  ingredientAmount: {
+    color: colors.darkGrey,
   },
 });
