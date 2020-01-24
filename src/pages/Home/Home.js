@@ -58,8 +58,8 @@ export default class Home extends PureComponent {
   };
 
   fetchRecipies = () => {
-    const {retrieveRecipies} = this.props;
-    retrieveRecipies(100);
+    const {retrieveRecipies, recipies} = this.props;
+    (!recipies || recipies.length <= 0) && retrieveRecipies(100);
   };
 
   renderLoader = () => (
@@ -92,12 +92,10 @@ export default class Home extends PureComponent {
 
     return (
       <View style={{flex: 1}}>
-        <SafeAreaView>
-          <TouchableOpacity style={styles.input} onPress={this.goToSearch}>
-            <Text style={styles.inputCopy}>Search...</Text>
-          </TouchableOpacity>
-        </SafeAreaView>
-        <ScrollView>
+        <TouchableOpacity style={styles.input} onPress={this.goToSearch}>
+          <Text style={styles.inputCopy}>Search...</Text>
+        </TouchableOpacity>
+        <ScrollView contentContainerStyle={styles.scrollView}>
           {popularRecipies.length > 0 && <CardCarousel title="Popular" data={popularRecipies} />}
           {veganRecipies.length > 0 && <CardCarousel title="Vegan" data={veganRecipies} />}
           {vegetarianRecipies.length > 0 && (

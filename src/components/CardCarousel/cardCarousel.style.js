@@ -4,6 +4,9 @@ import {colors, metrics} from '../../themes';
 export default StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 30,
+    borderBottomWidth: 1,
+    borderColor: colors.greyBorder,
   },
   title: {
     fontSize: 40,
@@ -12,8 +15,11 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 20,
   },
+  carousel: {
+    marginLeft: 10,
+    paddingVertical: 10,
+  },
   slide: {
-    overflow: 'hidden',
     borderRadius: 10,
     backgroundColor: colors.blueGrey,
     marginRight: 20,
@@ -22,9 +28,13 @@ export default StyleSheet.create({
       width: 0,
       height: 4,
     },
-    shadowOpacity: 1,
+    shadowOpacity: 0.2,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  slideContent: {
+    overflow: 'hidden',
+    borderRadius: 10,
   },
   image: {
     borderRadius: 10,

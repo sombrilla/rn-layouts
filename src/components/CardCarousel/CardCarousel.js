@@ -24,16 +24,18 @@ class CardCarousel extends Component {
     const {image, title} = item;
     return (
       <TouchableOpacity onPress={() => this.handleCardPress(item)} style={styles.slide}>
-        <Picture style={styles.image} source={image} size={metrics.screen.width - 80} />
-        <LinearGradient
-          style={styles.gradient}
-          colors={[colors.transparent, colors.blackHalf]}
-          locations={[0.5, 0.8]}
-        />
-        <View style={styles.infoContainer}>
-          <Text numberOfLines={2} style={styles.slideTitle}>
-            {title}
-          </Text>
+        <View style={styles.slideContent}>
+          <Picture style={styles.image} source={image} size={metrics.screen.width - 100} />
+          <LinearGradient
+            style={styles.gradient}
+            colors={[colors.transparent, colors.blackHalf]}
+            locations={[0.5, 0.8]}
+          />
+          <View style={styles.infoContainer}>
+            <Text numberOfLines={2} style={styles.slideTitle}>
+              {title}
+            </Text>
+          </View>
         </View>
       </TouchableOpacity>
     );
@@ -46,7 +48,7 @@ class CardCarousel extends Component {
         <Text style={styles.title}>{title}</Text>
         <Carousel
           data={data}
-          contentContainerCustomStyle={{marginLeft: 10}}
+          contentContainerCustomStyle={styles.carousel}
           renderItem={this.renderItem}
           sliderWidth={metrics.screen.width}
           itemWidth={metrics.screen.width - 80}

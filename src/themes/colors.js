@@ -28,7 +28,7 @@ export default {
   red: hexRed,
   // Mainly used for dividers and background accents
   greyBackground: hexWithAlphaComponent(hexMidGrey, 0.15),
-  greyBorder: hexWithAlphaComponent(hexMidGrey, 0.2),
+  greyBorder: hexWithAlphaComponent(hexMidGrey, 0.3),
   whiteBorder: hexWithAlphaComponent(hexWhite, 0.2),
   // Mainly used for (gradient)overlays and shadows
   whiteOverlay: hexWithAlphaComponent(hexWhite, 0.3),
