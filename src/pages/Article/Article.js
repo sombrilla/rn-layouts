@@ -86,7 +86,7 @@ export default class Article extends PureComponent {
                   <Text style={styles.ingredientsTitle}>Ingredients</Text>
                   <Icon
                     name={isOpen ? 'chevron-up' : 'chevron-down'}
-                    size={20}
+                    size={30}
                     color={colors.blueGrey}
                   />
                 </TouchableOpacity>
