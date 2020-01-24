@@ -2,7 +2,7 @@ import {createSelector} from 'reselect';
 
 export const getPopularRecipies = createSelector(
   state => state.recipies.recipies,
-  recipies => recipies.filter(reicpe => reicpe.veryPoupular === true),
+  recipies => recipies.filter(reicpe => reicpe.veryPopular === true),
 );
 
 export const getVeganRecipies = createSelector(
