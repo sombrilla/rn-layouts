@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Animated, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Collapsible from 'react-native-collapsible';
 import styles from './article.style';
 import {metrics, colors} from '../../themes';
 import CtaIcon from '../../components/CtaIcon';
@@ -21,14 +22,14 @@ export default class Article extends PureComponent {
   static defaultProps = {};
   static displayName = 'Article';
 
-  // constructor(props){
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props);
 
-  componentDidMount = () => {
-    const {navigation} = this.props;
-    console.log(navigation.getParam('data', []));
-  };
+    this.state = {
+      isOpen: false,
+      contentHeight: undefined,
+    };
+  }
 
   handleClose = () => {
     const {navigation} = this.props;
@@ -36,11 +37,14 @@ export default class Article extends PureComponent {
     navigation.goBack();
   };
 
+  handleOpenExpandable = () => this.setState({isOpen: !this.state.isOpen});
+
   render() {
     const {navigation} = this.props;
+    const {isOpen} = this.state;
     const data = navigation.getParam('data', []);
 
-    const {title, image, readyInMinutes, servings, extendedIngredients} = data;
+    const {title, image, readyInMinutes, servings, healthScore, extendedIngredients} = data;
 
     return (
       <>
@@ -69,10 +73,24 @@ export default class Article extends PureComponent {
                   <Icon name="bowl" size={30} color={colors.blueGrey} />
                   <Text style={styles.infoCopy}>{servings}</Text>
                 </View>
+                <View style={styles.infoBlock}>
+                  <Text style={styles.infoLabel}>HEALTH</Text>
+                  <Icon name="cards-heart" size={30} color={colors.blueGrey} />
+                  <Text style={styles.infoCopy}>{healthScore}/100</Text>
+                </View>
               </View>
               <View style={styles.ingredientsContainer}>
-                <Text style={styles.ingredientsTitle}>Ingredients</Text>
-                <View style={styles.ingredientsWrapper}>
+                <TouchableOpacity
+                  style={styles.ingredientsButton}
+                  onPress={this.handleOpenExpandable}>
+                  <Text style={styles.ingredientsTitle}>Ingredients</Text>
+                  <Icon
+                    name={isOpen ? 'chevron-down' : 'chevron-up'}
+                    size={20}
+                    color={colors.blueGrey}
+                  />
+                </TouchableOpacity>
+                <Collapsible collapsed={!isOpen} style={styles.ingredientsWrapper}>
                   {extendedIngredients.map(ingredient => {
                     const upperCaseName =
                       ingredient.name &&
@@ -98,7 +116,7 @@ export default class Article extends PureComponent {
                       </View>
                     );
                   })}
-                </View>
+                </Collapsible>
               </View>
             </View>
           </View>

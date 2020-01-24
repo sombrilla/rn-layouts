@@ -20,6 +20,7 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     ...shadows.globalShadow,
     zIndex: 999,
+    opacity: 0.85,
   },
   gradient: {
     position: 'absolute',
@@ -31,17 +32,20 @@ export default StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 10,
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   infoBlock: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 30,
+    width: '30%',
     borderWidth: 1,
     borderColor: colors.greyBorder,
     borderRadius: 10,
     padding: 10,
   },
   infoLabel: {
+    width: '100%',
+    textAlign: 'center',
     fontSize: 10,
     fontWeight: 'bold',
     backgroundColor: colors.blueGrey,
@@ -56,16 +60,20 @@ export default StyleSheet.create({
     color: colors.blueGrey,
     marginTop: 5,
   },
+  ingredientsButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+  },
   ingredientsContainer: {
     backgroundColor: colors.greyBorder,
-    paddingVertical: 15,
   },
   ingredientsTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 10,
     color: colors.blueGrey,
-    paddingHorizontal: 10,
   },
   ingredientBlock: {
     flexDirection: 'row',
