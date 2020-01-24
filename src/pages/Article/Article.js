@@ -85,7 +85,7 @@ export default class Article extends PureComponent {
                   onPress={this.handleOpenExpandable}>
                   <Text style={styles.ingredientsTitle}>Ingredients</Text>
                   <Icon
-                    name={isOpen ? 'chevron-down' : 'chevron-up'}
+                    name={isOpen ? 'chevron-up' : 'chevron-down'}
                     size={20}
                     color={colors.blueGrey}
                   />
