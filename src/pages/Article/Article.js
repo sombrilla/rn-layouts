@@ -6,6 +6,7 @@ import styles from './article.style';
 import {metrics, colors} from '../../themes';
 import CtaIcon from '../../components/CtaIcon';
 import Picture from '../../components/Picture';
+import Icon from '../../components/Icon';
 
 /**
  * Description
@@ -33,20 +34,37 @@ export default class Article extends PureComponent {
     const {navigation} = this.props;
     const data = navigation.getParam('data', []);
 
-    const {title, image} = data;
+    const {title, image, readyInMinutes, servings} = data;
 
     return (
       <>
         <CtaIcon onPress={this.handleClose} iconName="close" style={styles.closeButton} />
         <ScrollView style={styles.container}>
           <View style={styles.headerContainer}>
-            <Picture style={styles.image} source={image} size={metrics.screen.width} />
-            <LinearGradient
-              style={styles.gradient}
-              colors={[colors.transparent, colors.blackHalf]}
-              locations={[0.5, 0.8]}
-            />
-            <Text style={styles.title}>{title}</Text>
+            <View>
+              <Picture style={styles.image} source={image} size={metrics.screen.width} />
+              <LinearGradient
+                style={styles.gradient}
+                colors={[colors.transparent, colors.blackHalf]}
+                locations={[0.5, 0.8]}
+              />
+              <Text style={styles.title}>{title}</Text>
+            </View>
+
+            <View style={styles.content}>
+              <View style={styles.infoContainer}>
+                <View style={styles.infoBlock}>
+                  <Text style={styles.infoLabel}>READY IN</Text>
+                  <Icon name="alarm" size={30} color={colors.blueGrey} />
+                  <Text style={styles.infoCopy}>{readyInMinutes} minutes</Text>
+                </View>
+                <View style={styles.infoBlock}>
+                  <Text style={styles.infoLabel}>SERVINGS</Text>
+                  <Icon name="bowl" size={30} color={colors.blueGrey} />
+                  <Text style={styles.infoCopy}>{servings}</Text>
+                </View>
+              </View>
+            </View>
           </View>
         </ScrollView>
       </>
