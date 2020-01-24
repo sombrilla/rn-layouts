@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../themes';
+import {colors, shadows} from '../../themes';
 
 export default StyleSheet.create({
   container: {
@@ -11,22 +11,21 @@ export default StyleSheet.create({
     marginHorizontal: 10,
   },
   closeButton: {
-    borderWidth: 1,
-    borderColor: colors.lightGrey,
     paddingTop: 4,
     borderRadius: 20,
+    backgroundColor: colors.white,
+    ...shadows.globalShadow,
   },
   input: {
     flex: 1,
     height: 50,
     borderRadius: 20,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     paddingVertical: 10,
     marginVertical: 20,
     margin: 10,
-    borderWidth: 1,
-    borderColor: colors.lightGrey,
     color: colors.black,
     paddingHorizontal: 20,
+    ...shadows.globalShadow,
   },
 });

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {metrics, colors} from '../../themes';
+import {metrics, colors, shadows} from '../../themes';
 
 export default StyleSheet.create({
   container: {
@@ -11,15 +11,7 @@ export default StyleSheet.create({
     backgroundColor: colors.blueGrey,
     width: metrics.screen.width - 20,
     height: metrics.screen.width - 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 3.84,
-
-    elevation: 5,
+    ...shadows.globalShadow,
   },
   image: {
     borderRadius: 10,

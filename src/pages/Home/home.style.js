@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../themes';
+import {shadows} from '../../themes';
 
 export default StyleSheet.create({
   container: {
@@ -30,14 +30,7 @@ export default StyleSheet.create({
     right: 0,
     top: 30,
     zIndex: 999,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-    elevation: 5,
+    ...shadows.globalShadow,
   },
   inputCopy: {
     color: 'grey',

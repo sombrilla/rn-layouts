@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors, metrics} from '../../themes';
+import {colors, metrics, shadows} from '../../themes';
 
 export default StyleSheet.create({
   container: {
@@ -23,14 +23,7 @@ export default StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.blueGrey,
     marginRight: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.84,
-    elevation: 5,
+    ...shadows.globalShadow,
   },
   slideContent: {
     overflow: 'hidden',
