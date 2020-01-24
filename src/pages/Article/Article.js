@@ -104,7 +104,7 @@ export default class Article extends PureComponent {
                           source={`https://spoonacular.com/cdn/ingredients_100x100/${
                             ingredient.image
                           }`}
-                          size={50}
+                          size={70}
                           style={styles.ingredientImage}
                         />
                         <View style={styles.ingredientInfo}>

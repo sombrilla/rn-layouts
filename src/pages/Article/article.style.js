@@ -90,11 +90,12 @@ export default StyleSheet.create({
     borderRadius: 10,
   },
   ingredientName: {
-    fontWeight: 'bold',
+    fontSize: 18,
     color: colors.blueGrey,
     marginBottom: 5,
   },
   ingredientAmount: {
+    fontSize: 16,
     color: colors.darkGrey,
   },
 });
