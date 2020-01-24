@@ -30,7 +30,9 @@ export default class Search extends PureComponent {
   }
 
   componentDidMount = () => {
-    this.input.focus();
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.input.focus();
+    });
   };
 
   onChangeText = text => {
