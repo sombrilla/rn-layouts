@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, ScrollView, Animated, TouchableOpacity, FlatList} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity, FlatList} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Collapsible from 'react-native-collapsible';
 import styles from './article.style';
@@ -26,7 +26,7 @@ export default class Article extends PureComponent {
     super(props);
 
     this.state = {
-      isOpen: false,
+      isIngredientsOpen: false,
       contentHeight: undefined,
     };
   }
@@ -37,7 +37,7 @@ export default class Article extends PureComponent {
     navigation.goBack();
   };
 
-  handleOpenExpandable = () => this.setState({isOpen: !this.state.isOpen});
+  handleOpenIngredients = () => this.setState({isIngredientsOpen: !this.state.isIngredientsOpen});
 
   renderIngredients = ({item}) => {
     const upperCaseName = item.name && item.name[0].toUpperCase() + item.name.slice(1);
@@ -59,16 +59,40 @@ export default class Article extends PureComponent {
     );
   };
 
+  renderInstructions = ({item}) => (
+    <View style={styles.instructionBlock}>
+      <View style={styles.instructionInfo}>
+        <Text style={styles.instructionStep}>Step {item.number}</Text>
+        <Text style={styles.instructionCopy}>{item.step}</Text>
+      </View>
+    </View>
+  );
+
   render() {
     const {navigation} = this.props;
-    const {isOpen} = this.state;
+    const {isIngredientsOpen} = this.state;
     const data = navigation.getParam('data', []);
 
-    const {title, image, readyInMinutes, servings, healthScore, extendedIngredients} = data;
+    const {
+      title,
+      image,
+      readyInMinutes,
+      servings,
+      healthScore,
+      extendedIngredients,
+      analyzedInstructions,
+    } = data;
 
     return (
       <>
-        <CtaIcon onPress={this.handleClose} iconName="close" style={styles.closeButton} />
+        <CtaIcon
+          onPress={this.handleClose}
+          iconName="close"
+          iconColor={colors.white}
+          iconSize={35}
+          style={styles.closeButton}
+          backgroundColor={colors.transparent}
+        />
         <ScrollView style={styles.container}>
           <View style={styles.headerContainer}>
             <View>
@@ -102,15 +126,15 @@ export default class Article extends PureComponent {
               <View style={styles.ingredientsContainer}>
                 <TouchableOpacity
                   style={styles.ingredientsButton}
-                  onPress={this.handleOpenExpandable}>
+                  onPress={this.handleOpenIngredients}>
                   <Text style={styles.ingredientsTitle}>Ingredients</Text>
                   <Icon
-                    name={isOpen ? 'chevron-up' : 'chevron-down'}
+                    name={isIngredientsOpen ? 'chevron-up' : 'chevron-down'}
                     size={30}
                     color={colors.blueGrey}
                   />
                 </TouchableOpacity>
-                <Collapsible collapsed={!isOpen} style={styles.ingredientsWrapper}>
+                <Collapsible collapsed={!isIngredientsOpen} style={styles.ingredientsWrapper}>
                   <FlatList
                     contentContainerStyle={styles.container}
                     data={extendedIngredients}
@@ -119,6 +143,16 @@ export default class Article extends PureComponent {
                     scrollEnabled={false}
                   />
                 </Collapsible>
+              </View>
+              <View style={styles.instructionsContainer}>
+                <Text style={styles.instructionsTitle}>Instructions</Text>
+                <FlatList
+                  contentContainerStyle={styles.container}
+                  data={analyzedInstructions[0].steps}
+                  renderItem={this.renderInstructions}
+                  keyExtractor={item => `${item.number}`}
+                  scrollEnabled={false}
+                />
               </View>
             </View>
           </View>

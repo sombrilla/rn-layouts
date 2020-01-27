@@ -13,11 +13,10 @@ export default StyleSheet.create({
   closeButton: {
     position: 'absolute',
     top: 50,
-    left: 10,
+    right: 10,
     paddingTop: 4,
     borderRadius: 20,
     marginRight: 10,
-    backgroundColor: colors.white,
     ...shadows.globalShadow,
     zIndex: 999,
     opacity: 0.85,
@@ -96,6 +95,36 @@ export default StyleSheet.create({
   },
   ingredientAmount: {
     fontSize: 16,
+    color: colors.darkGrey,
+  },
+  instructionsContainer: {
+    paddingBottom: 100,
+  },
+  instructionsTitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.blueGrey,
+  },
+  instructionBlock: {
+    flexDirection: 'row',
+    paddingVertical: 25,
+    borderTopWidth: 1,
+    borderColor: colors.greyBorder,
+    paddingHorizontal: 10,
+  },
+  instructionStep: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.blueGrey,
+    marginBottom: 10,
+  },
+  instructionCopy: {
+    fontSize: 16,
+    lineHeight: 25,
     color: colors.darkGrey,
   },
 });
