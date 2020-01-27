@@ -4,6 +4,9 @@ import {colors, shadows} from '../../themes';
 export default StyleSheet.create({
   container: {},
   title: {
+    fontFamily: 'Raleway',
+    fontWeight: 'bold',
+    letterSpacing: 1.2,
     fontSize: 30,
     color: colors.white,
     paddingHorizontal: 10,
@@ -19,7 +22,6 @@ export default StyleSheet.create({
     marginRight: 10,
     ...shadows.globalShadow,
     zIndex: 999,
-    opacity: 0.85,
   },
   gradient: {
     position: 'absolute',
@@ -70,6 +72,7 @@ export default StyleSheet.create({
     backgroundColor: colors.greyBorder,
   },
   ingredientsTitle: {
+    fontFamily: 'Raleway',
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.blueGrey,
@@ -105,6 +108,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
     paddingVertical: 20,
+    fontFamily: 'Raleway',
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.blueGrey,
@@ -117,6 +121,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
   },
   instructionStep: {
+    fontFamily: 'Raleway',
     fontSize: 18,
     fontWeight: 'bold',
     color: colors.blueGrey,

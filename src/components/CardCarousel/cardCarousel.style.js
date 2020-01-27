@@ -9,6 +9,7 @@ export default StyleSheet.create({
     borderColor: colors.greyBorder,
   },
   title: {
+    fontFamily: 'Raleway',
     fontSize: 40,
     fontWeight: 'bold',
     color: colors.blueGrey,
@@ -41,9 +42,9 @@ export default StyleSheet.create({
     paddingVertical: 15,
   },
   slideTitle: {
+    fontFamily: 'Raleway',
     color: colors.white,
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 5,
   },
   gradient: {

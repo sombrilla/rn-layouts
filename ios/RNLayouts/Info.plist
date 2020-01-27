@@ -54,6 +54,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>MaterialCommunityIcons.ttf</string>
+		<string>Raleway.ttf</string>
+		<string>Raleway Bold.ttf</string>
+		<string>Raleway Thin.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
