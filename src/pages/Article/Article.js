@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, ScrollView, Animated, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, Animated, TouchableOpacity, FlatList} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Collapsible from 'react-native-collapsible';
 import styles from './article.style';
@@ -38,6 +38,26 @@ export default class Article extends PureComponent {
   };
 
   handleOpenExpandable = () => this.setState({isOpen: !this.state.isOpen});
+
+  renderIngredients = ({item}) => {
+    const upperCaseName = item.name && item.name[0].toUpperCase() + item.name.slice(1);
+    const upperCaseUnit = item.unit && item.unit[0].toUpperCase() + item.unit.slice(1);
+    return (
+      <View style={styles.ingredientBlock}>
+        <Picture
+          source={`https://spoonacular.com/cdn/ingredients_100x100/${item.image}`}
+          size={70}
+          style={styles.ingredientImage}
+        />
+        <View style={styles.ingredientInfo}>
+          <Text style={styles.ingredientName}>{upperCaseName}</Text>
+          <Text style={styles.ingredientAmount}>
+            {numberToFraction(item.amount)} {upperCaseUnit}
+          </Text>
+        </View>
+      </View>
+    );
+  };
 
   render() {
     const {navigation} = this.props;
@@ -91,31 +111,13 @@ export default class Article extends PureComponent {
                   />
                 </TouchableOpacity>
                 <Collapsible collapsed={!isOpen} style={styles.ingredientsWrapper}>
-                  {extendedIngredients.map(ingredient => {
-                    const upperCaseName =
-                      ingredient.name &&
-                      ingredient.name[0].toUpperCase() + ingredient.name.slice(1);
-                    const upperCaseUnit =
-                      ingredient.unit &&
-                      ingredient.unit[0].toUpperCase() + ingredient.unit.slice(1);
-                    return (
-                      <View style={styles.ingredientBlock}>
-                        <Picture
-                          source={`https://spoonacular.com/cdn/ingredients_100x100/${
-                            ingredient.image
-                          }`}
-                          size={70}
-                          style={styles.ingredientImage}
-                        />
-                        <View style={styles.ingredientInfo}>
-                          <Text style={styles.ingredientName}>{upperCaseName}</Text>
-                          <Text style={styles.ingredientAmount}>
-                            {numberToFraction(ingredient.amount)} {upperCaseUnit}
-                          </Text>
-                        </View>
-                      </View>
-                    );
-                  })}
+                  <FlatList
+                    contentContainerStyle={styles.container}
+                    data={extendedIngredients}
+                    renderItem={this.renderIngredients}
+                    keyExtractor={item => `${item.id}`}
+                    scrollEnabled={false}
+                  />
                 </Collapsible>
               </View>
             </View>
